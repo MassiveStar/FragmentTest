@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.fragmenttest1002.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_ingresoDatosFragment"
+            app:destination="@id/ingresoDatosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ingresoDatosFragment"
+        android:name="com.example.fragmenttest1002.IngresoDatosFragment"
+        android:label="IngresoDatosFragment" >
+        <action
+            android:id="@+id/action_ingresoDatosFragment_to_dataSaveFragment"
+            app:destination="@id/dataSaveFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataSaveFragment"
+        android:name="com.example.fragmenttest1002.DataSaveFragment"
+        android:label="DataSaveFragment" >
+        <action
+            android:id="@+id/action_dataSaveFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <argument
+            android:name="nombreArg"
+            app:argType="string" />
+        <argument
+            android:name="fechaNacimientoArg"
+            app:argType="string" />
+        <argument
+            android:name="passwordArg"
+            app:argType="string" />
+    </fragment>
+</navigation>

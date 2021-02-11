@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import com.example.fragmenttest1002.databinding.FragmentIngresoDatosBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -18,6 +21,18 @@ class IngresoDatosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ingreso_datos, container, false)
+        val binding: FragmentIngresoDatosBinding = DataBindingUtil.inflate(
+                inflater,R.layout.fragment_ingreso_datos,container,false)
+
+        binding.validarButton.setOnClickListener {
+            it.findNavController().
+            navigate(IngresoDatosFragmentDirections.actionIngresoDatosFragmentToDataSaveFragment(
+                    binding.nombreEdit.text.toString().trim(),
+                    binding.fechaEdit.text.toString().trim(),
+                    binding.passwordEdit.text.toString().trim()
+            ))
+        }
+
+        return binding.root
     }
 }

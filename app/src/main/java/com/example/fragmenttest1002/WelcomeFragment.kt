@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.fragmenttest1002.databinding.FragmentWelcomeBinding
 
 /**
@@ -22,7 +23,12 @@ class WelcomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentWelcomeBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_welcome,
         container,false)
+
+        binding.nextButton.setOnClickListener {
+            it.findNavController().
+            navigate(WelcomeFragmentDirections.actionWelcomeFragmentToIngresoDatosFragment())
+        }
+
         return binding.root
     }
-
 }
